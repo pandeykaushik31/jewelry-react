@@ -1,17 +1,18 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-export const useStickyHeader = () => {
+const useStickyHeader = () => {
+  const [isSticky, setSticky] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
-      const header = document.querySelector(".sticky-header");
-      if (window.scrollY < 100) {
-        header?.classList.remove("sticky");
-      } else {
-        header?.classList.add("sticky");
-      }
+      setSticky(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  return isSticky;
 };
+
+export default useStickyHeader; // This ensures the default export is properly defined

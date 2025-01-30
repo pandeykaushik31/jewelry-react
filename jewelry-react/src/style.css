@@ -948,14 +948,20 @@ ul {
 
 /* **********Slider Section *************** */
 .single_slider {
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
-  background-size: cover;
+  display: flex;
+  justify-content: center; /* Centers image horizontally */
+  align-items: center; /* Centers image vertically */
+  height: 500px; /* Adjust height as needed */
+  position: relative;
 }
 
+.single_slider img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Ensures proper resizing */
+}
 .slider_area {
-  margin-bottom: 35px;
+  margin-bottom: 55px;
 }
 
 .slider_area.owl-carousel .owl-dots {
@@ -977,7 +983,7 @@ ul {
 }
 
 .slider_area.owl-carousel .owl-dots .owl-dot.active {
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .slider_area.owl-carousel .owl-dots .owl-dot.active::before {
@@ -991,8 +997,19 @@ ul {
   border-radius: 50%;
 }
 
+.slider_content {
+  position: absolute;
+  top: 50%;
+  left: 300px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5); /* Optional: Adds a dark overlay */
+  padding: 20px;
+  border-radius: 10px;
+}
+
 .slider_area .single_slider .row {
-  height: 500px;
+  height: 50px;
 }
 
 .slider_area .slider_content {
@@ -1136,6 +1153,7 @@ ul {
   font-size: 13px;
   border-radius: 5px;
 }
+/* new slide */
 
 /* **********banner section ************ */
 .banner_section {

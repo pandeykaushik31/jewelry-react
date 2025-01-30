@@ -1,15 +1,23 @@
-import React, { useState } from "react"; // Correct import for useState
-import { useNavigate } from "react-router-dom"; // Correct import for useNavigate
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { stickyNavbar } from "../main";
 
-const Header = () => {
+const Home = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    stickyNavbar();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) setUser(storedUser);
+  }, []);
+
   const handleLogout = () => {
+    localStorage.removeItem("user");
     setUser(null);
-    navigate("/login");
+    navigate("/");
   };
+
   return (
     <header className="header_area header_black home_black_version">
       {/* Header Top */}
@@ -19,54 +27,53 @@ const Header = () => {
             <div className="col-lg-6 col-md-6">
               <div className="social_icone">
                 <ul>
-                  <li>
-                    <a href="#">
-                      <i className="ion-social-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="ion-social-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="ion-social-instagram"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="ion-social-linkedin"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="ion-social-youtube"></i>
-                    </a>
-                  </li>
+                  <li><a href="#"><i className="ion-social-facebook"></i></a></li>
+                  <li><a href="#"><i className="ion-social-twitter"></i></a></li>
+                  <li><a href="#"><i className="ion-social-instagram"></i></a></li>
+                  <li><a href="#"><i className="ion-social-linkedin"></i></a></li>
+                  <li><a href="#"><i className="ion-social-youtube"></i></a></li>
                 </ul>
               </div>
             </div>
             <div className="col-lg-6 col-md-6">
               <div className="top_right text-right">
                 <ul>
-                  <li className="top_links">
-                    {!user ? (
-                      <>
-                        <li>
-                          <Link to="/login">Login</Link>
-                        </li>
-                        <li>
-                          <Link to="/register">Register</Link>
-                        </li>
-                      </>
-                    ) : (
-                      <>
-                        <span>Welcome, {user.name}</span>
-                        <button onClick={handleLogout}>Logout</button>
-                      </>
-                    )}
+                  {/* <li className="language">
+                    <a href="#">English <i className="ion-chevron-down"></i></a>
+                    <ul className="dropdown_language">
+                      <li><a href="#">French</a></li>
+                      <li><a href="#">Germany</a></li>
+                      <li><a href="#">Hindi</a></li>
+                    </ul>
                   </li>
+                  <li className="currency">
+                    <a href="#">INR <i className="ion-chevron-down"></i></a>
+                    <ul className="dropdown_currency">
+                      <li><a href="#">USD - Dollar</a></li>
+                      <li><a href="#">EUR - Euro</a></li>
+                      <li><a href="#">GBP - British Pound</a></li>
+                    </ul>
+                  </li>
+                  <li className="top_links">
+                    <a href="#">My Account <i className="ion-chevron-down"></i></a>
+                    <ul className="dropdown_links">
+                      <li><a href="#">Checkout</a></li>
+                      <li><a href="#">My Account</a></li>
+                      <li><a href="#">Shopping Cart</a></li>
+                      <li><a href="#">Wishlist</a></li>
+                    </ul>
+                  </li> */}
+                  {!user ? (
+                    <>
+                      <li><Link to="/login">Login</Link></li>
+                      <li><Link to="/register">Register</Link></li>
+                    </>
+                  ) : (
+                    <>
+                      <span>Welcome, {user.name}</span>
+                      <button onClick={handleLogout}>Logout</button>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
@@ -84,9 +91,7 @@ const Header = () => {
                   <img src="/images/icon/icon_phone.png" alt="Phone Icon" />
                 </div>
                 <div className="contact_box">
-                  <p>
-                    Inquiry / Helpline : <a href="tel:1234567894">1234567894</a>
-                  </p>
+                  <p>Inquiry / Helpline : <a href="tel:1234567894">1234567894</a></p>
                 </div>
               </div>
             </div>
@@ -100,22 +105,16 @@ const Header = () => {
             <div className="col-lg-5 col-md-7 col-6">
               <div className="middel_right">
                 <div className="search_btn">
-                  <a href="#">
-                    <i className="ion-ios-search-strong"></i>
-                  </a>
+                  <a href="#"><i className="ion-ios-search-strong"></i></a>
                   <div className="dropdown_search">
                     <form action="#">
                       <input type="text" placeholder="Search Product ...." />
-                      <button type="submit">
-                        <i className="ion-ios-search-strong"></i>
-                      </button>
+                      <button type="submit"><i className="ion-ios-search-strong"></i></button>
                     </form>
                   </div>
                 </div>
                 <div className="wishlist_btn">
-                  <a href="#">
-                    <i className="ion-heart"></i>
-                  </a>
+                  <a href="#"><i className="ion-heart"></i></a>
                 </div>
                 <div className="cart_link">
                   <a href="#">
@@ -131,19 +130,12 @@ const Header = () => {
                         <h3>Cart</h3>
                       </div>
                       <div className="mini_cart_close">
-                        <a href="javascript:void(0)">
-                          <i className="ion-android-close"></i>
-                        </a>
+                        <a href="javascript:void(0)"><i className="ion-android-close"></i></a>
                       </div>
                     </div>
                     <div className="cart_item">
                       <div className="cart_img">
-                        <a href="#">
-                          <img
-                            src="/images/nav-product/product.jpg"
-                            alt="Earings"
-                          />
-                        </a>
+                        <a href="#"><img src="/images/nav-product/product.jpg" alt="Earings" /></a>
                       </div>
                       <div className="cart_info">
                         <a href="#">Earings</a>
@@ -151,9 +143,7 @@ const Header = () => {
                         <span className="price_cart">Rs. 54,599</span>
                       </div>
                       <div className="cart_remove">
-                        <a href="#">
-                          <i className="ion-android-close"></i>
-                        </a>
+                        <a href="#"><i className="ion-android-close"></i></a>
                       </div>
                     </div>
                     <div className="cart_total">
@@ -165,9 +155,7 @@ const Header = () => {
                         <a href="#">View Cart</a>
                       </div>
                       <div className="cart_button checkout">
-                        <a href="#" className="active">
-                          Checkout
-                        </a>
+                        <a href="#" className="active">Checkout</a>
                       </div>
                     </div>
                   </div>
@@ -339,4 +327,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Home;

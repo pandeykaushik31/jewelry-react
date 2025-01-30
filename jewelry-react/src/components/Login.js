@@ -15,7 +15,7 @@ const Login = ({ setUser }) => {
       const response = await axios.post("http://localhost:5000/api/users/login", { email, password });
       alert(response.data.message);
       setUser({ email });
-      navigate("/");
+      navigate("/header");
     } catch (error) {
       alert(error.response.data.message);
     }

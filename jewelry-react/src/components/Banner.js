@@ -26,6 +26,7 @@ const Banner = () => {
   ];
 
   return (
+    
     <section className="banner_section banner_black">
       <div className="container">
         <div className="row">

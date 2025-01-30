@@ -2501,3 +2501,11 @@ p {
   background: #a8741a;
   color: #fff;
 }
+.top_right ul li {
+  display: inline-block; /* Ensures links stay on the same line */
+}
+
+.top_right ul li li a {
+  margin-right: 8px; /* Adjust space between links */
+  text-decoration: none;
+}

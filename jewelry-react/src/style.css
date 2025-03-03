@@ -23,7 +23,7 @@ body {
   font-weight: 400;
   visibility: visible;
   font-family: "Poppins", sans-serif;
-  color: #5a5a5a;
+  color: #5a5a5a8b;
 }
 
 h1,
@@ -730,6 +730,22 @@ ul {
   animation-fill-mode: none;
   animation-play-state: running;
 }
+
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #5a5a5a8b; /* Change this to your navbar background */
+  z-index: 9999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.header_bottom {
+  transition: all 0.3s ease-in-out;
+}
+
 
 .header_bottom.sticky-header.sticky .main_menu_inner {
   text-align: center;
@@ -1646,6 +1662,9 @@ ul {
   display: none !important;
 }
 
+/* productSection1 */
+
+
 /* add this from last part  */
 
 .p_section1 .slick-list {
@@ -1740,6 +1759,35 @@ ul {
 }
 
 /* ******** product section ******* */
+.product_row1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Even spacing */
+}
+
+.custom-col-5 {
+  width: 23%; /* Ensure 4 products fit in a row */
+  margin-bottom: 20px; /* Add spacing below each product */
+}
+
+.custom-col-5 img {
+  width: 100%; /* Make images responsive */
+  height: auto;
+}
+
+/* Responsive for small screens */
+@media (max-width: 1024px) {
+  .custom-col-5 {
+    width: 48%; /* Show 2 images per row on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-col-5 {
+    width: 100%; /* Show 1 image per row on mobile */
+  }
+}
+
 .product_container.bottom button {
   display: block !important;
   position: absolute;

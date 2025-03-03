@@ -202,7 +202,7 @@ const Home = () => {
                             <a href="#">News</a>
                           </li>
                           <li>
-                            <a href="#">Blog</a>
+                          <a href="#" onClick={() => navigate("/blog")}>Blog</a>
                           </li>
                         </ul>
                       </li>

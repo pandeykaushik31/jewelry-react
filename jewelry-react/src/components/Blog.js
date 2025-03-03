@@ -1,6 +1,58 @@
 import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Blog = () => {
+  const blogData = [
+    {
+      image: "/images/blog/4.jpg",
+      title: "Earrings for Navratri",
+      author: "Ashirwaad",
+      date: "4 November 2020",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit commodi quo eligendi laudantium quisquam, magnam hic numquam fuga illum sed aperiam sint, expedita dolor.",
+      link: "#",
+    },
+    {
+      image: "/images/blog/1.jpg",
+      title: "Pendant for Engagement",
+      author: "Ashirwaad",
+      date: "3 November 2020",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit commodi quo eligendi laudantium quisquam, magnam hic numquam fuga illum sed aperiam sint, expedita dolor.",
+      link: "#",
+    },
+    {
+      image: "/images/blog/2.jpg",
+      title: "Engagement Couple Rings",
+      author: "Ashirwaad",
+      date: "2 November 2020",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit commodi quo eligendi laudantium quisquam, magnam hic numquam fuga illum sed aperiam sint, expedita dolor.",
+      link: "#",
+    },
+    {
+      image: "/images/blog/3.jpg",
+      title: "Earrings for Party",
+      author: "Ashirwaad",
+      date: "5 November 2020",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit commodi quo eligendi laudantium quisquam, magnam hic numquam fuga illum sed aperiam sint, expedita dolor.",
+      link: "#",
+    },
+  ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <section className="blog_section blog_black">
       <div className="container">
@@ -11,102 +63,35 @@ const Blog = () => {
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="blog_wrapper blog_column3 owl-carousel">
-            <div className="col-lg-4">
-              <div className="single_blog">
-                <div className="blog_thumb">
-                  <a href="#"><img src="images/blog/4.jpg" alt="blog 4" /></a>
+        <Slider {...settings}>
+          {blogData.map((blog, index) => (
+            <div className="single_blog" key={index}>
+              <div className="blog_thumb">
+                <a href={blog.link}>
+                  <img src={blog.image} alt={`blog ${index + 1}`} />
+                </a>
+              </div>
+              <div className="blog_content">
+                <h3>
+                  <a href={blog.link}>{blog.title}</a>
+                </h3>
+                <div className="author_name">
+                  <p>
+                    <span>by</span>
+                    <span className="themes"> {blog.author}</span>
+                    <span className="post_by"> / {blog.date}</span>
+                  </p>
                 </div>
-                <div className="blog_content">
-                  <h3><a href="#">Earrings for Navratri</a></h3>
-                  <div className="author_name">
-                    <p>
-                      <span>by</span>
-                      <span className="themes">Ashirwaad</span>
-                      <span className="post_by">/ 4 November 2020</span>
-                    </p>
-                  </div>
-                  <div className="post_desc">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit commodi quo eligendi laudantium quisquam, magnam hic numquam fuga illum sed aperiam sint, expedita dolor.</p>
-                  </div>
-                  <div className="read_more">
-                    <a href="#">Continue Reading</a>
-                  </div>
+                <div className="post_desc">
+                  <p>{blog.description}</p>
+                </div>
+                <div className="read_more">
+                  <a href={blog.link}>Continue Reading</a>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
-              <div className="single_blog">
-                <div className="blog_thumb">
-                  <a href="#"><img src="images/blog/1.jpg" alt="blog 1" /></a>
-                </div>
-                <div className="blog_content">
-                  <h3><a href="#">Pendant for Engagement</a></h3>
-                  <div className="author_name">
-                    <p>
-                      <span>by</span>
-                      <span className="themes">Ashirwaad</span>
-                      <span className="post_by">/ 3 November 2020</span>
-                    </p>
-                  </div>
-                  <div className="post_desc">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit commodi quo eligendi laudantium quisquam, magnam hic numquam fuga illum sed aperiam sint, expedita dolor.</p>
-                  </div>
-                  <div className="read_more">
-                    <a href="#">Continue Reading</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="single_blog">
-                <div className="blog_thumb">
-                  <a href="#"><img src="images/blog/2.jpg" alt="blog 2" /></a>
-                </div>
-                <div className="blog_content">
-                  <h3><a href="#">Engagement Couple Rings</a></h3>
-                  <div className="author_name">
-                    <p>
-                      <span>by</span>
-                      <span className="themes">Ashirwaad</span>
-                      <span className="post_by">/ 2 November 2020</span>
-                    </p>
-                  </div>
-                  <div className="post_desc">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit commodi quo eligendi laudantium quisquam, magnam hic numquam fuga illum sed aperiam sint, expedita dolor.</p>
-                  </div>
-                  <div className="read_more">
-                    <a href="#">Continue Reading</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="single_blog">
-                <div className="blog_thumb">
-                  <a href="#"><img src="images/blog/3.jpg" alt="blog 3" /></a>
-                </div>
-                <div className="blog_content">
-                  <h3><a href="#">Earrings for Party</a></h3>
-                  <div className="author_name">
-                    <p>
-                      <span>by</span>
-                      <span className="themes">Ashirwaad</span>
-                      <span className="post_by">/ 5 November 2020</span>
-                    </p>
-                  </div>
-                  <div className="post_desc">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit commodi quo eligendi laudantium quisquam, magnam hic numquam fuga illum sed aperiam sint, expedita dolor.</p>
-                  </div>
-                  <div className="read_more">
-                    <a href="#">Continue Reading</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          ))}
+        </Slider>
       </div>
     </section>
   );
